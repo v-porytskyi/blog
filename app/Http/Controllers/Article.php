@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticle;
-use Carbon\Carbon;
+use App\Http\Requests\UpdateArticle;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Models\Article as Model;
@@ -25,19 +24,10 @@ class Article
             ? self::PER_PAGE
             : $perPage;
 
-        // prepare list of articles
-        $collection = new Collection();
-        for ($i = 1; $i <= $perPage; $i++) {
-            $article = new Model();
-            $article->id = $i;
-            $article->title = Str::random(15);
-            $article->description = Str::substr($this->content(), 0, 120);
-            $article->content = $this->content();
-            $article->created_at = Carbon::now();
-            $article->updated_at = Carbon::now();
-
-            $collection->push($article);
-        }
+        $collection = (new Model())
+            ->setPerPage($perPage)
+            ->orderByDesc('id')
+            ->get();
 
         // render page
         return view('articles.list', [
@@ -47,13 +37,7 @@ class Article
 
     public function show($id): View
     {
-        $article = new Model();
-        $article->id = (int)$id;
-        $article->title = "Article with id: " . $id;
-        $article->description = Str::substr($this->content(), 0, 120);
-        $article->content = $this->content();
-        $article->created_at = Carbon::now();
-        $article->updated_at = Carbon::now();
+        $article = (new Model())->newQuery()->findOrFail((int)$id);
 
         // render page
         return view('articles.show', [
@@ -70,8 +54,19 @@ class Article
         $article->title = $title;
         $article->description = Str::substr($content, 0, 120);
         $article->content = $content;
+        $article->saveOrFail();
 
-        // store ...
+        return redirect(route('articles.list'));
+    }
+
+    public function update(UpdateArticle $request, $id): RedirectResponse
+    {
+        /** @var Model $article */
+        $article = (new Model())->newQuery()->findOrFail((int)$id);
+        $article->title = $request->get('title');
+        $article->description = $request->get('description');
+        $article->content = $request->get('content');
+        $article->updateOrFail();
 
         return redirect(route('articles.list'));
     }
@@ -79,6 +74,16 @@ class Article
     public function createForm(): View
     {
         return view('articles.create');
+    }
+
+    public function updateForm($id): View
+    {
+        $article = (new Model())->newQuery()->findOrFail((int)$id);
+
+        // render page
+        return view('articles.update', [
+            'article' => $article,
+        ]);
     }
 
     private function content(): string

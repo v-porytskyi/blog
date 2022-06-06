@@ -21,5 +21,7 @@ Route::get('/', function () {
 Route::get('/articles', Article::class . '@index')->name('articles.list');
 Route::get('/articles/create', Article::class . '@createForm')->name('articles.create.form');
 Route::post('/articles', Article::class . '@store')->name('articles.store');
+Route::put('/articles/{id}', Article::class . '@update')->name('articles.update');
 
 Route::get('/articles/{id}', Article::class . '@show')->name('articles.show');
+Route::get('/articles/{id}/update', Article::class . '@updateForm')->name('articles.update.form');

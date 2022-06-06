@@ -20,6 +20,7 @@
                 </p>
                 <footer>
                     <datetime>{{ $article->created_at }}</datetime>
+                    <a href="{{route('articles.update.form', ['id' => $article->id])}}">Update</a>
                 </footer>
             </article>
         @endforeach

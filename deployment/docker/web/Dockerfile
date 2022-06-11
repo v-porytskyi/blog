@@ -10,6 +10,7 @@ ENV CONTAINER_BUILD_NUMBER=$CONTAINER_BUILD_NUMBER
 ENV CONTAINER_BUILD_BRANCH=$CONTAINER_BUILD_BRANCH
 
 WORKDIR /var/www/html
+
 VOLUME /var/www/html
 
 RUN apt-get update \
@@ -47,6 +48,9 @@ RUN apt-get update \
         php-oauth \
         php-uuid \
     && apt-get clean
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/bin --filename=composer
 
 RUN a2enmod rewrite
 

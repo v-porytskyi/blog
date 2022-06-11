@@ -1,18 +1,10 @@
 version: "3.11"
 
 services:
-  install:
-    build:
-      context: .
-    container_name: blog_install
-    volumes:
-      - .:/var/www/html
-    command: "composer install"
-
-  blog:
+  app:
     build:
       context: deployment/docker/web
-    container_name: blog
+    container_name: app
     volumes:
       - .:/var/www/html
     ports:

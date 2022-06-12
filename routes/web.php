@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blog.pages.welcome');
-})->name('blog.home');
+})->name(\Modules\Core\Enums\RoutePath::BLOG_HOME_PAGE);
 
 Route::get('/articles', Article::class . '@index')->name('articles.list');
 Route::get('/articles/create', Article::class . '@createForm')->name('articles.create.form');

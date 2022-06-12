@@ -254,3 +254,18 @@ a {
     border: solid 1px #82A7AD;
     border-top: 0;
 }
+
+.paginator {
+    line-height: 57px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+}
+
+.paginator ul li {
+    display: inline-block;
+    border-top: none;
+}
+
+.paginator ul li a {
+    padding: 5px 10px;
+}

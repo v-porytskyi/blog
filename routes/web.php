@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Article;
 use Illuminate\Support\Facades\Route;
+use Modules\Core\Enums\RoutePath;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blog.pages.welcome');
-})->name(\Modules\Core\Enums\RoutePath::BLOG_HOME_PAGE);
-
-Route::get('/articles', Article::class . '@index')->name('articles.list');
-Route::get('/articles/create', Article::class . '@createForm')->name('articles.create.form');
-Route::post('/articles', Article::class . '@store')->name('articles.store');
-Route::put('/articles/{id}', Article::class . '@update')->name('articles.update');
-
-Route::get('/articles/{id}', Article::class . '@show')->name('articles.show');
-Route::get('/articles/{id}/update', Article::class . '@updateForm')->name('articles.update.form');
+})->name(RoutePath::BLOG_HOME_PAGE);

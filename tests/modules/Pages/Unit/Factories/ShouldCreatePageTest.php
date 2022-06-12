@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\modules\Pages\Unit;
+namespace Tests\modules\Pages\Unit\Factories;
 
 use App\Models\Page;
 use Database\Factories\PageFactory;

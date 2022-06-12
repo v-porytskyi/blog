@@ -195,6 +195,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Enable pages module
+        \Modules\Pages\Providers\Bootstrap::class,
     ],
 
     /*

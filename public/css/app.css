@@ -76,6 +76,7 @@ a {
 
 .box {
     margin: 0 0 50px 0;
+    display: flow-root;
 }
 
 #content {
@@ -253,4 +254,32 @@ a {
     box-shadow: 0px 0px 150px 0px rgba(0,0,0,0.15);
     border: solid 1px #82A7AD;
     border-top: 0;
+}
+
+.paginator {
+    line-height: 57px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+}
+
+.paginator ul li {
+    display: inline-block;
+    border-top: none;
+}
+
+.paginator ul li a {
+    padding: 5px 10px;
+}
+
+.post-image {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.post-counter {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
 }

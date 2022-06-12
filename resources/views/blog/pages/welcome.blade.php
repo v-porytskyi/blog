@@ -23,6 +23,7 @@
 </div>
 <div class="box">
     <h3>Nullam curae integer</h3>
+    <img class="post-image" src="https://iamafoodblog.b-cdn.net/wp-content/uploads/2021/05/al-pastor-3507w-1024x683.webp">
     <p>
         Congue quam posuere elit adipiscing varius tellus. Consequat porttitor dolor sed viverra cum congue.
         Varius primis auctor est nisl at mi quam. Ante libero arcu ridiculus blandit placerat. Sociis in

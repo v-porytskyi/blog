@@ -15,6 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    public const STATUS_DRAFT = 0;
+    public const STATUS_PUBLISHED = 1;
+
     protected $table = 'articles';
 
     protected $fillable = [

@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('blog.pages.welcome');
+})->name('blog.home');
 
 Route::get('/articles', Article::class . '@index')->name('articles.list');
 Route::get('/articles/create', Article::class . '@createForm')->name('articles.create.form');

@@ -21,18 +21,22 @@ class Article
     {
         $query = $this->factory->make($request);
         $articles = $this->articles->paginate($query);
+        $popular = $this->articles->popular(5);
 
         return view('blog.pages.articles', [
             'articles' => $articles,
+            'popular' => $popular,
         ]);
     }
 
     public function show(string $id)
     {
         $article = $this->articles->findById((int)$id);
+        $popular = $this->articles->popular(5);
 
         return view('blog.pages.article', [
             'article' => $article,
+            'popular' => $popular,
         ]);
     }
 }

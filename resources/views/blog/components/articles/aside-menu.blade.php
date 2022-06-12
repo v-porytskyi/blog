@@ -10,3 +10,17 @@
         <li class="last"><a href="#">Turpis lacus lectus iaculis</a></li>
     </ul>
 </div>
+
+@if(isset($popular))
+<div class="box">
+    <h3>Popular Articles</h3>
+    <ul class="list">
+        @foreach($popular as $popularArticle)
+            <li class="first"><a
+                    href="{{route(\Modules\Core\Enums\RoutePath::BLOG_ARTICLE_SHOW_PAGE, ['id' => $popularArticle->id])}}">{{$popularArticle->title}}</a>
+            </li>
+        @endforeach
+    </ul>
+</div>
+@endif
+

@@ -13,6 +13,8 @@ class Pages extends Seeder
 {
     private const LIST_OF_PAGES = [
         RoutePath::BLOG_HOME_PAGE,
+        RoutePath::BLOG_ARTICLE_PAGE,
+        RoutePath::BLOG_ARTICLE_SHOW_PAGE,
     ];
 
     public function run(Repository $repository): void

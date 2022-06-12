@@ -11,7 +11,7 @@ class Articles extends Seeder
     public function run(DatabaseManager $databaseManager): void
     {
         $databaseManager->beginTransaction();
-        ArticleFactory::times(1000)->create();
+        ArticleFactory::times(10000)->create();
         $databaseManager->commit();
     }
 }
